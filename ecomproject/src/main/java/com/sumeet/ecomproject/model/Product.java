@@ -1,6 +1,7 @@
 package com.sumeet.ecomproject.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +28,8 @@ public class Product {
     private BigDecimal price;
     private String desc;
     private String brand;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-YYYY")
     private Date releaseDate;
     private String category;
 
