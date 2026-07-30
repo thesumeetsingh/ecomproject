@@ -1,16 +1,22 @@
 package com.sumeet.ecomproject.controller;
 
+import com.sumeet.ecomproject.model.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 
 @RestController("/api")
 @CrossOrigin
 public class LoginController {
 
-    @RequestMapping("/login")
+    @RequestMapping("/login/{id}")
+    public ResponseEntity<User> login(@PathVariable int id){
+
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 }
