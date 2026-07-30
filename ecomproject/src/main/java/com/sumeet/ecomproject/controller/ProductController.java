@@ -3,6 +3,7 @@ package com.sumeet.ecomproject.controller;
 
 import com.sumeet.ecomproject.model.Product;
 import com.sumeet.ecomproject.service.ProductService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.util.List;
 
 @RestController
@@ -90,6 +92,12 @@ public class ProductController {
                 .valueOf(product
                 .getImageType()))
                 .body(imageFile);
+    }
+
+    @GetMapping("products/search")
+    public ResponseEntity<List<Product>> searchProduct(@RequestParam String keyword){
+        List<Product> products= service.searchProducts(keyword);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
 
