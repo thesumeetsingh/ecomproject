@@ -43,8 +43,10 @@ public class ProductController {
 
     }
 
-    @PostMapping("/product")
+    @PostMapping("/product")  //if the object does not contain any image then @RequestBody Product poroduct can be used as the parameter
     public ResponseEntity<?> addProduct(@RequestPart Product product, @RequestPart MultipartFile imageFile){
+        System.out.println(product);
+
         try{
             Product prod=service.addProduct(product, imageFile);
             return new ResponseEntity<>(prod, HttpStatus.CREATED);
@@ -53,12 +55,41 @@ public class ProductController {
         }
     }
 
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable int id, @RequestPart Product product, @RequestPart MultipartFile imageFile){
+        try{
+            Product updatedProduct= service.updateProduct(id, product, imageFile);
+            if(updatedProduct!=null){
+                return new ResponseEntity<>("Update successfull", HttpStatus.OK);
+            }
+        }catch(Exception e){
+            return new ResponseEntity<>("Update Failed, An error occured", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>("Update Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int id){
+        Product deletedProduct=service.getProductById(id);
+        if(deletedProduct!=null){
+            service.deleteProduct(id);
+            return new ResponseEntity<>("Product Deleted Successfully", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("deletion failed", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/product/{productId}/image")
     public ResponseEntity<byte[]> getImageByProductId(@PathVariable Integer productId){
         Product product= service.getProductById(productId);
         byte[] imageFile = product.getImageData();
 
-        return ResponseEntity.ok().contentType(MediaType.valueOf(product.getImageType())).body(imageFile);
+        return ResponseEntity.ok()
+                .contentType(MediaType
+                .valueOf(product
+                .getImageType()))
+                .body(imageFile);
     }
 
 
