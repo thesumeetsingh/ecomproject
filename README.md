@@ -1,218 +1,143 @@
 # E-Commerce Product Management System
 
-## Overview
+A full-stack e-commerce product management application built with **React**, **Spring Boot**, and **MySQL**. The application allows users to manage products, upload product images, search products, and maintain persistent product data.
 
-This is a full-stack E-Commerce Product Management application built using **Spring Boot** for the backend and **React (Vite)** for the frontend.
+---
 
-The application allows users to browse products, search products, filter by category, view detailed product information, upload product images, manage products, maintain a shopping cart, and simulate a checkout process that updates product inventory.
+## Home Page
 
-The backend exposes REST APIs while the frontend consumes them using Axios.
+![Home Page](screenshots/homepage.png)
 
 ---
 
 ## Features
 
-### Product Management
-- View all available products
-- View individual product details
 - Add new products
 - Update existing products
 - Delete products
-- Upload product images
-- Store images directly in the database
-
-### Product Search
-- Search by
-  - Product Name
-  - Brand
-  - Category
-  - Description
-
-### Categories
-- Browse products category-wise
-- Filter products dynamically
-
-### Product Details
-- Display product information
-- Product image
-- Brand
-- Description
-- Price
-- Release date
-- Availability status
-
-### Shopping Cart
-- Add products to cart
-- Increase or decrease quantity
-- Remove items
-- Calculate total price
+- Search products by name, category, brand, or description
+- Upload and display product images
+- Product availability management
+- Shopping cart
 - Checkout popup
-- Inventory updates after checkout
-
-### UI Features
-- Responsive interface
-- Dark mode / Light mode
-- Search suggestions
-- Bootstrap based design
+- Responsive UI
+- Persistent MySQL database
+- RESTful API architecture
 
 ---
 
-# Tech Stack
+## Tech Stack
 
-## Frontend
+### Frontend
 
 - React
 - Vite
-- React Router
-- Axios
 - Bootstrap
+- Axios
 - CSS
 
-## Backend
+### Backend
 
-- Java
+- Java 25
 - Spring Boot
 - Spring MVC
 - Spring Data JPA
 - Hibernate
-- H2 Database
-
-## Build Tools
-
 - Maven
-- npm
+
+### Database
+
+- MySQL
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```
-ecomproject/
-
+ECommerceProject
 │
-├── backend/
+├── backend
 │   ├── controller
 │   ├── service
 │   ├── repository
 │   ├── model
-│   └── resources
+│   ├── resources
+│   └── pom.xml
 │
-├── frontend/
-│   ├── components
-│   ├── Context
-│   ├── assets
-│   ├── App.jsx
-│   └── main.jsx
-│
-└── README.md
+└── frontend
+    ├── components
+    ├── assets
+    ├── App.jsx
+    └── main.jsx
 ```
 
 ---
 
-# Backend APIs
+## REST API
 
 | Method | Endpoint | Description |
-|---------|----------|-------------|
+|----------|----------------------|----------------|
 | GET | `/api/products` | Get all products |
 | GET | `/api/product/{id}` | Get product by ID |
-| GET | `/api/product/{id}/image` | Get product image |
 | POST | `/api/product` | Add product |
 | PUT | `/api/product/{id}` | Update product |
 | DELETE | `/api/product/{id}` | Delete product |
+| GET | `/api/product/{id}/image` | Fetch product image |
 | GET | `/api/products/search?keyword=` | Search products |
 
 ---
 
-# Database
+## Database
 
-The project uses the **H2 in-memory database**.
+The application uses **MySQL** for persistent storage.
 
-Each product stores:
+Product information including uploaded images is stored in the database.
 
-- Product ID
-- Name
-- Brand
-- Description
-- Price
-- Category
-- Release Date
-- Stock Quantity
-- Availability
-- Image Name
-- Image Type
-- Image Data (BLOB)
+Hibernate automatically manages schema creation and updates.
 
 ---
 
-# Image Upload
+## Running the Project
 
-Product images are uploaded using **multipart/form-data**.
-
-The backend stores:
-
-- image name
-- image type
-- image bytes
-
-Images are retrieved through a dedicated REST endpoint.
-
----
-
-# Installation Guide
-
-## Prerequisites
-
-Install the following software:
-
-- Java 21+ (or the version compatible with your Spring Boot setup)
-- Maven
-- Node.js
-- npm
-- Git
-
----
-
-## Clone the Repository
+### Clone Repository
 
 ```bash
-git clone https://github.com/thesumeetsingh/ecomproject.git
-
-cd ecomproject
+git clone https://github.com/yourusername/ecommerce-project.git
 ```
 
 ---
 
-# Backend Setup
+### Backend Setup
 
-Navigate to the backend project.
+1. Open the backend project.
+2. Create a MySQL database.
 
-```bash
-cd backend
+```sql
+CREATE DATABASE ecomdb;
 ```
 
-Install dependencies and run:
+3. Configure `application.properties`.
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/ecomdb
+spring.datasource.username=root
+spring.datasource.password=YOUR_PASSWORD
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+4. Install dependencies
 
 ```bash
 mvn clean install
-
-mvn spring-boot:run
 ```
 
-Backend runs on
-
-```
-http://localhost:8080
-```
+5. Run Spring Boot.
 
 ---
 
-# Frontend Setup
-
-Navigate to the frontend project.
-
-```bash
-cd frontend
-```
+### Frontend Setup
 
 Install dependencies
 
@@ -220,86 +145,44 @@ Install dependencies
 npm install
 ```
 
-Start the development server
+Run
 
 ```bash
 npm run dev
 ```
 
-Frontend usually runs on
+---
 
-```
-http://localhost:5173
-```
+## Screenshots
+
+### Home Page
+
+![Home Page](screenshots/homepage.png)
 
 ---
 
-# How to Use
+## Future Improvements
 
-1. Start the Spring Boot backend.
-2. Start the React frontend.
-3. Open the frontend in your browser.
-4. Browse available products.
-5. Add products using the Add Product page.
-6. Upload product images.
-7. Search products using the search bar.
-8. Filter products by category.
-9. View product details.
-10. Add products to the cart.
-11. Complete checkout to update inventory.
-
----
-
-# Technologies Used
-
-### Backend
-
-- Spring Boot
-- Spring MVC
-- Spring Data JPA
-- Hibernate
-- H2 Database
-- Maven
-
-### Frontend
-
-- React
-- Vite
-- Axios
-- React Router
-- Bootstrap
-- CSS
-
----
-
-# Future Improvements
-
-- User authentication and authorization
-- JWT-based login
-- MySQL/PostgreSQL integration
-- Order history
-- Payment gateway integration
+- User Authentication
+- JWT Authorization
+- Order Management
 - Wishlist
-- Product reviews and ratings
-- Admin dashboard
+- Product Categories
 - Pagination
-- Product sorting
-- Cloud image storage (AWS S3, Cloudinary)
-- Docker support
-- Deployment to cloud platforms
+- Cloud Image Storage
+- Docker Deployment
+- Payment Gateway Integration
 
 ---
 
-# Author
+## Author
 
-**Sumeet Singh**
+Sumeet Singh
 
-B.Tech Computer Science & Engineering
-
-Bhilai Institute of Technology, Durg
+B.Tech Computer Science and Engineering
 
 ---
 
-# License
+## License
 
-This project is intended for learning and educational purposes.
+This project is intended for educational and portfolio purposes.
