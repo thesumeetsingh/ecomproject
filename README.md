@@ -102,7 +102,7 @@ Hibernate automatically manages schema creation and updates.
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/ecommerce-project.git
+git clone https://github.com/thesumeetsingh/ecomproject.git
 ```
 
 ---
