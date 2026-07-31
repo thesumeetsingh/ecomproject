@@ -5,7 +5,7 @@ const AddProduct = () => {
   const [product, setProduct] = useState({
     name: "",
     brand: "",
-    desc: "",
+    description: "",
     price: "",
     category: "",
     stockQuantity: "",
@@ -82,16 +82,16 @@ const AddProduct = () => {
         </div>
         <div className="col-12">
           <label className="form-label">
-            <h6>Description</h6>
+            <h6>Desription</h6>
           </label>
           <input
             type="text"
             className="form-control"
-            placeholder="Add product desc"
-            value={product.desc}
-            name="desc"
+            placeholder="Add product description"
+            value={product.description}
+            name="description"
             onChange={handleInputChange}
-            id="desc"
+            id="description"
           />
         </div>
         <div className="col-5">

@@ -175,9 +175,9 @@ Install the following software:
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/<repository-name>.git
+git clone https://github.com/thesumeetsingh/ecomproject.git
 
-cd <repository-name>
+cd ecomproject
 ```
 
 ---

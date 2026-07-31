@@ -9,7 +9,7 @@ const UpdateProduct = () => {
   const [updateProduct, setUpdateProduct] = useState({
     id: null,
     name: "",
-    desc: "",
+    description: "",
     brand: "",
     price: "",
     category: "",
@@ -131,16 +131,16 @@ const UpdateProduct = () => {
           </div>
           <div className="col-12">
             <label className="form-label">
-              <h6>Description</h6>
+              <h6>Desription</h6>
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder={product.desc}
-              name="desc"
+              placeholder={product.description}
+              name="description"
               onChange={handleChange}
-              value={updateProduct.desc}
-              id="desc"
+              value={updateProduct.description}
+              id="description"
             />
           </div>
           <div className="col-5">
