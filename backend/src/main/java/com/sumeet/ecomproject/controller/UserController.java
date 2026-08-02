@@ -3,7 +3,6 @@ package com.sumeet.ecomproject.controller;
 
 import com.sumeet.ecomproject.model.User;
 import com.sumeet.ecomproject.service.UserService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
