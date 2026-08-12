@@ -12,13 +12,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/{username}")
-    public User getUserById(@PathVariable String username){
-        return userService.getUserById(username);
-    }
-
-    @PostMapping("/{username}/create")
-    public User createUser(@RequestPart User user){
-        return userService.createUser(user);
-    }
+//    @GetMapping("/{username}")
+//    public User getUserById(@PathVariable String username){
+//        return userService.getUserById(username);
+//    }
+//
+//    @PostMapping("/{username}/create")
+//    public User createUser(@RequestPart User user){
+//        return userService.createUser(user);
+//    }
 }
