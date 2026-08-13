@@ -2,7 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "ecomproject",
   "main": "./worker.js",
-  "compatibility_date": "2026-08-13",
+  "compatibility_date": "2026-08-12",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
